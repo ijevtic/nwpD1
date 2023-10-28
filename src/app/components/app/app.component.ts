@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private configService: ConfigService) {
   }
 
-  getUserName() {
-    return this.configService.getUserName();
+  getToken() {
+    return this.configService.getToken();
   }
 }

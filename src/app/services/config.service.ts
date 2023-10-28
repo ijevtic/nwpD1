@@ -7,11 +7,11 @@ export class ConfigService {
 
   private configComponentVisits: number;
 
-  private userName: string;
+  private token: string;
 
   constructor() {
     this.configComponentVisits = 0;
-    this.userName = '';
+    this.token = '';
   }
 
   incrementConfigComponentVisits(): void {
@@ -22,12 +22,12 @@ export class ConfigService {
     return this.configComponentVisits;
   }
 
-  setUserName(userName: string): void {
-    this.userName = userName;
+  setToken(token: string): void {
+    localStorage.setItem('api_token', token);
+    this.token = token;
   }
 
-  getUserName(): string {
-    return this.userName;
+  getToken(): string {
+    return this.token;
   }
-
 }
