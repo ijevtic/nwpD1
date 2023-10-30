@@ -9,9 +9,6 @@ export const environment = {
   textSimilarityApi: 'https://api.dandelion.eu/datatxt/sim/v1',
   languageDetectionApi: 'https://api.dandelion.eu/datatxt/li/v1',
   sentimentAnalysisApi: 'https://api.dandelion.eu/datatxt/sent/v1',
-  /* trunk-ignore(trufflehog/Dandelion) */
-  token: '910cf9de52914443bca38fe19ce5b5c7',
-
 };
 
 /*

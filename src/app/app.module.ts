@@ -4,7 +4,6 @@ import {RouterModule} from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { HomeComponent } from './components/home/home.component';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
@@ -19,17 +18,22 @@ import { LanguageDetectionComponent } from './components/language-detection/lang
 import { PercentagePipe } from './pipes/percentage/percentage.pipe';
 import { HistoryComponent } from './components/history/history.component';
 import { CustomDateFormatPipe } from './pipes/custom-date-format/custom-date-format.pipe';
+import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
+import {MatInputModule} from '@angular/material/input';
+// import {NgFor} from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ConfigurationComponent,
     EntityExtractionComponent,
     TextSimilarityComponent,
     LanguageDetectionComponent,
     PercentagePipe,
     HistoryComponent,
-    CustomDateFormatPipe
+    CustomDateFormatPipe,
+    SentimentAnalysisComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,10 @@ import { CustomDateFormatPipe } from './pipes/custom-date-format/custom-date-for
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   exports: [
     RouterModule

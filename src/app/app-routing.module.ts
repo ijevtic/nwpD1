@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
 import { HistoryComponent } from './components/history/history.component';
+import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    canDeactivate: [AuthGuard]
+    path: "configuration",
+    component: ConfigurationComponent,
   },
   {
-    path: "configuration",
+    path: "",
     component: ConfigurationComponent,
   },
   {
@@ -40,6 +38,12 @@ const routes: Routes = [
   {
     path: "history",
     component: HistoryComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard]
+  },
+  {
+    path: "sentiment-analysis",
+    component: SentimentAnalysisComponent,
     canActivate: [AuthGuard],
     canDeactivate: [AuthGuard]
   },

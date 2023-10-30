@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { EntityExtractionResponse, LanguageDetectionResponse, TextSimilarityResponse } from 'src/app/model';
+import { EntityExtractionResponse, LanguageDetectionResponse, SentimentAnalysisResponse, TextSimilarityResponse } from 'src/app/model';
 import { ConfigService } from '../config/config.service';
 import { HistoryService } from '../history/history.service';
 
@@ -14,6 +14,7 @@ export class DandelionService {
   private readonly entityExtractionApi = environment.entityExtractionApi
   private readonly textSimilarityApi = environment.textSimilarityApi;
   private readonly languageDetectionApi = environment.languageDetectionApi;
+  private readonly sentimentAnalysisApi = environment.sentimentAnalysisApi;
 
   constructor(private httpClient: HttpClient, private historyService: HistoryService) { }
 
@@ -49,16 +50,13 @@ export class DandelionService {
     return this.httpClient.get<LanguageDetectionResponse>(this.languageDetectionApi, { params });
   }
 
+  getSentimentAnalysis(text: string, token: string, lang: string): Observable<SentimentAnalysisResponse> {
+    let params = new HttpParams();
+    params = params.append('text', text.replace(/ /g, "+"));
+    params = params.append('lang', lang);
+    params = params.append('token', token);
+    this.historyService.addRecord(this.entityExtractionApi, params);
 
-  // getPosts(): Observable<PostClass[]> {
-  //   return this.httpClient.get<Post[]>(`${this.apiUrl}/posts`).pipe<PostClass[]>(map(posts => {
-  //     const postInstances: PostClass[] = []
-  //
-  //     for(const post of posts){
-  //       postInstances.push(new PostClass(post.userId, post.id, post.title, post.body));
-  //     }
-  //
-  //     return postInstances;
-  //   }));
-  // }
+    return this.httpClient.get<SentimentAnalysisResponse>(this.sentimentAnalysisApi, { params });
+  }
 }

@@ -1,0 +1,23 @@
+<textarea [(ngModel)]="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Text:"></textarea>
+
+<h4>Basic mat-select</h4>
+<mat-form-field>
+  <mat-label>Language</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let option of options" [value]="selectedOption">
+      {{option}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div>
+    <button type="button" class="btn btn-primary" (click)="analyzeSentiment()">Analyze sentiment
+    </button>
+</div>
+
+<div *ngIf="result === true">
+    <p>Score: {{score}}</p>
+    <div [style.background]="getBackgroundColor()">
+        {{sentimentType}}
+    </div>
+</div>

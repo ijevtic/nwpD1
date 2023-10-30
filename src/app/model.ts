@@ -78,3 +78,16 @@ export interface DetectedLang {
   lang: string,
   confidence: number,
 }
+
+export interface SentimentAnalysisResponse {
+  time: number,
+  lang: string,
+  timestamp: string,
+  langConfidence: number,
+  sentiment: Sentiment,
+}
+
+export interface Sentiment {
+  score: number,
+  type: string,
+}
