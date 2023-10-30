@@ -15,14 +15,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
-
+import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
+import { PercentagePipe } from './pipes/percentage.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ConfigurationComponent,
     EntityExtractionComponent,
-    TextSimilarityComponent
+    TextSimilarityComponent,
+    LanguageDetectionComponent,
+    PercentagePipe
   ],
   imports: [
     BrowserModule,

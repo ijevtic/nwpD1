@@ -1,0 +1,20 @@
+<textarea [(ngModel)]="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Text:"></textarea>
+<mat-checkbox [checked]="cleanCheckBox" [(ngModel)]="cleanCheckBox">Clean</mat-checkbox>
+<div>
+    <button type="button" class="btn btn-primary" (click)="detectLanguage()">Detect Language
+</button>
+
+<!-- if languages are detected, print statistics-->
+
+<div *ngIf="detectedLanguages.length > 0">
+    <p>Detected Languages:</p>
+    <div *ngFor="let language of detectedLanguages; let i = index;" class="col-4">
+        <mat-card-title>{{language.lang}}</mat-card-title>
+        <mat-card class="example-card">
+            <mat-card-content>
+                <p>
+                    {{ language.confidence | percentage }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>

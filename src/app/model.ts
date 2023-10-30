@@ -67,3 +67,14 @@ export interface TextSimilarityResponse {
   lang: string,
   timestamp: string,
 }
+
+export interface LanguageDetectionResponse {
+  time: number,
+  timestamp: string,
+  detectedLangs: DetectedLang[],
+}
+
+export interface DetectedLang {
+  lang: string,
+  confidence: number,
+}

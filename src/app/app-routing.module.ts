@@ -5,6 +5,7 @@ import { AuthGuard } from './auth.guard';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
+import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,16 @@ const routes: Routes = [
     component: TextSimilarityComponent,
     canActivate: [AuthGuard],
     canDeactivate: [AuthGuard]
+  },
+  {
+    path: "language-detection",
+    component: LanguageDetectionComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard]
+  },
+  {
+    path: "**",
+    redirectTo: ""
   }
 ];
 

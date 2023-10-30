@@ -35,6 +35,7 @@
                         {{ annotation.abstract }}
                     </p>
                 </ng-container>
+                Categories:
                 <mat-list role="list">
                     <ng-container *ngIf="annotation.categories && annotation.categories.length > 0">
                         <mat-list-item *ngFor="let category of annotation.categories; let i = index;" role="listitem">{{category}}</mat-list-item>

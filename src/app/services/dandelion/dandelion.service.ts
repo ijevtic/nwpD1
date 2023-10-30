@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { EntityExtractionResponse, TextSimilarityResponse } from 'src/app/model';
+import { EntityExtractionResponse, LanguageDetectionResponse, TextSimilarityResponse } from 'src/app/model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class DandelionService {
 
   private readonly entityExtractionApi = environment.entityExtractionApi
   private readonly textSimilarityApi = environment.textSimilarityApi;
+  private readonly languageDetectionApi = environment.languageDetectionApi;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -34,6 +35,15 @@ export class DandelionService {
     params = params.append('token', token);
     return this.httpClient.get<TextSimilarityResponse>(this.textSimilarityApi, { params });
   }
+
+  getLanguageDetection(text: string, clean: boolean, token: string): Observable<LanguageDetectionResponse> {
+    let params = new HttpParams();
+    params = params.append('text', text.replace(/ /g, "+"));
+    params = params.append('clean', clean.toString());
+    params = params.append('token', token);
+    return this.httpClient.get<LanguageDetectionResponse>(this.languageDetectionApi, { params });
+  }
+
 
   // getPosts(): Observable<PostClass[]> {
   //   return this.httpClient.get<Post[]>(`${this.apiUrl}/posts`).pipe<PostClass[]>(map(posts => {
