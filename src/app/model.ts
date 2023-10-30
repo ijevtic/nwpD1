@@ -59,3 +59,11 @@ export interface TopEntity {
   score: number,
   uri: string,
 }
+
+
+export interface TextSimilarityResponse {
+  time: number,
+  similarity: number,
+  lang: string,
+  timestamp: string,
+}

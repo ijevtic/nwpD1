@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { EntityExtractionResponse } from 'src/app/model';
+import { EntityExtractionResponse, TextSimilarityResponse } from 'src/app/model';
 import { ConfigService } from '../config/config.service';
 
 @Injectable({
@@ -10,7 +10,8 @@ import { ConfigService } from '../config/config.service';
 })
 export class DandelionService {
 
-  private readonly apiUrl = environment.entityExtractionApi
+  private readonly entityExtractionApi = environment.entityExtractionApi
+  private readonly textSimilarityApi = environment.textSimilarityApi;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,8 +23,16 @@ export class DandelionService {
     params = params.append('lang', 'en');
     params = params.append('token', token);
     console.log(params);
-    return this.httpClient.get<EntityExtractionResponse>(this.apiUrl, { params });
+    return this.httpClient.get<EntityExtractionResponse>(this.entityExtractionApi, { params });
     // return this.httpClient.get<EntityExtractionResponse[]>(`${this.apiUrl}/?text=${text}&min_confidence=${minConfidence}&include=${include.join(',')}&lang=en&token=${token}`);
+  }
+
+  getTextSimilarity(text1: string, text2: string, token: string): Observable<TextSimilarityResponse> {
+    let params = new HttpParams();
+    params = params.append('text1', text1.replace(/ /g, "+"));
+    params = params.append('text2', text2.replace(/ /g, "+"));
+    params = params.append('token', token);
+    return this.httpClient.get<TextSimilarityResponse>(this.textSimilarityApi, { params });
   }
 
   // getPosts(): Observable<PostClass[]> {

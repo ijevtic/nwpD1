@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
+import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,12 @@ const routes: Routes = [
   {
     path: "entity-extraction",
     component: EntityExtractionComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard]
+  },
+  {
+    path: "text-similarity",
+    component: TextSimilarityComponent,
     canActivate: [AuthGuard],
     canDeactivate: [AuthGuard]
   }

@@ -14,13 +14,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ConfigurationComponent,
-    EntityExtractionComponent
+    EntityExtractionComponent,
+    TextSimilarityComponent
   ],
   imports: [
     BrowserModule,
