@@ -1,0 +1,49 @@
+<p>entity-extraction works!</p>
+<div class="slidecontainer row">
+    <p class="col-1">More Tags</p>
+    <input type="range" min="0" max="10" [(ngModel)]="sliderValue" class="slider col-3" id="min_confidence">
+    <p class="col-1">More Precision</p>
+</div>
+
+<!-- text area-->
+
+<div>
+    <textarea [(ngModel)]="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Text:"></textarea>
+</div>
+<div class="row">
+    <mat-checkbox [checked]="includeCheckBox" [(ngModel)]="includeCheckBox">Include</mat-checkbox>
+    <mat-checkbox class="mx-3" [checked]="imageCheckBox" [(ngModel)]="imageCheckBox" [disabled]="!includeCheckBox">Image</mat-checkbox>
+    <mat-checkbox class="mx-3" [checked]="abstractCheckBox" [(ngModel)]="abstractCheckBox" [disabled]="!includeCheckBox">Abstract</mat-checkbox>
+    <mat-checkbox class="mx-3" [checked]="categoriesCheckBox" [(ngModel)]="categoriesCheckBox" [disabled]="!includeCheckBox">Categories</mat-checkbox>
+</div>
+
+
+<div>
+    <button type="button" class="btn btn-primary" (click)="extractEntities()">Extract Entities</button>
+</div>
+
+<div class="row">
+    <div *ngFor="let annotation of annotations; let i = index;" class="col-4">
+        <mat-card-title>{{annotation.title}}</mat-card-title>
+        <mat-card class="example-card">
+            <ng-container *ngIf="annotation.image && annotation.image.thumbnail">
+                <img mat-card-image src={{annotation.image.thumbnail}} alt="Photo of a Shiba Inu">
+            </ng-container>
+            <mat-card-content>
+                <ng-container *ngIf="annotation.abstract">
+                    <p>
+                        {{ annotation.abstract }}
+                    </p>
+                </ng-container>
+                <mat-list role="list">
+                    <ng-container *ngIf="annotation.categories && annotation.categories.length > 0">
+                        <mat-list-item *ngFor="let category of annotation.categories; let i = index;" role="listitem">{{category}}</mat-list-item>
+                    </ng-container>
+                </mat-list>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+
+  

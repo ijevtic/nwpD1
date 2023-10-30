@@ -1,15 +1,14 @@
 <div>
     <h3>Configuration page</h3>
-    <p>Configuration page visits: {{ getConfigComponentVisits() }}</p>
   
     <div>
       <form (submit)="setToken()" class="mb-5">
         <div class="form-group mb-2">
-          <label for="name">User Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="name" [(ngModel)]="token">
+          <label for="token">Token</label>
+          <input type="text" class="form-control" id="token" name="token" placeholder="token" [(ngModel)]="token">
         </div>
   
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Set token</button>
       </form>
     </div>
   </div>

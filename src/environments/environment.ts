@@ -4,7 +4,14 @@
 
 export const environment = {
   production: false,
-  postApi: 'https://jsonplaceholder.typicode.com'
+  // postApi: 'https://jsonplaceholder.typicode.com',
+  entityExtractionApi: 'https://api.dandelion.eu/datatxt/nex/v1',
+  textSimilarityApi: 'https://api.dandelion.eu/datatxt/sim/v1',
+  languageDetectionApi: 'https://api.dandelion.eu/datatxt/li/v1',
+  sentimentAnalysisApi: 'https://api.dandelion.eu/datatxt/sent/v1',
+  /* trunk-ignore(trufflehog/Dandelion) */
+  token: '910cf9de52914443bca38fe19ce5b5c7',
+
 };
 
 /*

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ConfigurationComponent } from './components/configuration/configuration.component';
+import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,12 @@ const routes: Routes = [
   {
     path: "configuration",
     component: ConfigurationComponent,
+  },
+  {
+    path: "entity-extraction",
+    component: EntityExtractionComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard]
   }
 ];
 

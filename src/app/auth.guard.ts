@@ -15,6 +15,8 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
 
   constructor(private router: Router) {
+    // TODO: return to this
+    //localStorage.removeItem('api_token');
   }
 
   canActivate(
