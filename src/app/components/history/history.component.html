@@ -1,0 +1,12 @@
+<div *ngIf="historyEntries.length > 0">
+    <p>History:</p>
+    <div *ngFor="let entry of historyEntries; let i = index;" class="col-12">
+        <mat-card class="example-card">
+            <mat-card-content>
+                <p>
+                    {{ entry }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

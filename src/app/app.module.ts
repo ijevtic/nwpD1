@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
 import { PercentagePipe } from './pipes/percentage.pipe';
+import { HistoryComponent } from './components/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { PercentagePipe } from './pipes/percentage.pipe';
     EntityExtractionComponent,
     TextSimilarityComponent,
     LanguageDetectionComponent,
-    PercentagePipe
+    PercentagePipe,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

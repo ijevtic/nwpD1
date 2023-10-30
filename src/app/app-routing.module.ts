@@ -6,6 +6,7 @@ import { ConfigurationComponent } from './components/configuration/configuration
 import { EntityExtractionComponent } from './components/entity-extraction/entity-extraction.component';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
+import { HistoryComponent } from './components/history/history.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,12 @@ const routes: Routes = [
   {
     path: "language-detection",
     component: LanguageDetectionComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard]
+  },
+  {
+    path: "history",
+    component: HistoryComponent,
     canActivate: [AuthGuard],
     canDeactivate: [AuthGuard]
   },

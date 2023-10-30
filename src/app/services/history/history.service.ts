@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
+import {Stack} from "../../util/Stack";
+import {IStack} from "../../util/IStack";
+import { HttpParams } from '@angular/common/http';
+import { HistoryEntry, IStackEntry } from 'src/app/util/types';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HistoryService {
+export class HistoryService{
 
-  commands: string[] = [];
+  commands: IStack<IStackEntry> = new Stack();
 
-  constructor() { }
+  constructor() {}
 
-  addCommand(command: string): void {
-    this.commands.push(command);
+  addRecord(url: string, parameters: HttpParams): void {
+    const timestamp = new Date();
+    const requestUrl = `${url}?${parameters.toString()}`;
+    this.commands.push(new HistoryEntry(timestamp, requestUrl));
+    console.log("dodo", this.commands)
   }
 
-  getCommands(): string[] {
-    return this.commands;
+  getRecords(): string[] {
+    return this.commands.print();
   }
+
+  // getCommands(): IStack<IStackEntry> {
+  //   return this.commands;
+  // }
 }

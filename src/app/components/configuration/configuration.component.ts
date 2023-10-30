@@ -15,7 +15,7 @@ export class ConfigurationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.incrementConfigComponentVisits();
+    // this.configService.incrementConfigComponentVisits();
   }
 
   getConfigComponentVisits() {
