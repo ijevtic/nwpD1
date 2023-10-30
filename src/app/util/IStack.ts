@@ -5,7 +5,7 @@ export interface IStack<T> {
     pop(): void;
     top(): T | undefined;
     size(): number;
-    print(): string[];
+    print(): T[];
   }
   
   

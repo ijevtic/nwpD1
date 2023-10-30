@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IStack } from './IStack';
-import { IStackEntry } from './types';
-export class Stack implements IStack<IStackEntry> {
-    private storage: IStackEntry[] = [];
+import { HistoryEntry } from './types';
+export class Stack implements IStack<HistoryEntry> {
+    private storage: HistoryEntry[] = [];
     private length: number = 0;
   
     constructor() {}
   
-    push(item: IStackEntry): void {
+    push(item: HistoryEntry): void {
       if(this.storage.length == this.length) {
         this.storage.push(item);
       }
@@ -21,7 +21,7 @@ export class Stack implements IStack<IStackEntry> {
       this.length--;
     }
   
-    top(): IStackEntry | undefined {
+    top(): HistoryEntry | undefined {
       if(this.length == 0) {
         return undefined;
       }
@@ -32,11 +32,8 @@ export class Stack implements IStack<IStackEntry> {
       return this.length;
     }
 
-    print(): string[] {
-        let returnValue: string[] = [];
-        for (let i = this.length - 1; i >= 0; i--) {
-            returnValue.push(this.storage[i].print());
-        }
+    print(): HistoryEntry[] {
+        let returnValue: HistoryEntry[] = this.storage.reverse();
 
         return returnValue;
     }

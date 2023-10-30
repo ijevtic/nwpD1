@@ -4,7 +4,9 @@
         <mat-card class="example-card">
             <mat-card-content>
                 <p>
-                    {{ entry }}
+                    <b>{{ entry.timestamp | customDateFormat }}</b>
+                    <br>
+                    {{ entry.requestUrl }}
                 </p>
             </mat-card-content>
         </mat-card>

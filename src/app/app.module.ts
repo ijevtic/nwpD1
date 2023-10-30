@@ -16,8 +16,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
-import { PercentagePipe } from './pipes/percentage.pipe';
+import { PercentagePipe } from './pipes/percentage/percentage.pipe';
 import { HistoryComponent } from './components/history/history.component';
+import { CustomDateFormatPipe } from './pipes/custom-date-format/custom-date-format.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { HistoryComponent } from './components/history/history.component';
     TextSimilarityComponent,
     LanguageDetectionComponent,
     PercentagePipe,
-    HistoryComponent
+    HistoryComponent,
+    CustomDateFormatPipe
   ],
   imports: [
     BrowserModule,

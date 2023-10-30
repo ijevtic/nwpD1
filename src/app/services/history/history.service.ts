@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import {Stack} from "../../util/Stack";
 import {IStack} from "../../util/IStack";
 import { HttpParams } from '@angular/common/http';
-import { HistoryEntry, IStackEntry } from 'src/app/util/types';
+import { HistoryEntry } from 'src/app/util/types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService{
 
-  commands: IStack<IStackEntry> = new Stack();
+  commands: IStack<HistoryEntry> = new Stack();
 
   constructor() {}
 
@@ -20,11 +20,11 @@ export class HistoryService{
     console.log("dodo", this.commands)
   }
 
-  getRecords(): string[] {
+  getRecords(): HistoryEntry[] {
     return this.commands.print();
   }
 
-  // getCommands(): IStack<IStackEntry> {
+  // getCommands(): IStack<HistoryEntry> {
   //   return this.commands;
   // }
 }
