@@ -1,27 +1,72 @@
-# Domaci1
+# Dandelion Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+Simple web frontend created in Angular for the subject Advanced Web Programming.
+[Dandelion](https://dandelion.eu/)
 
-## Development server
+## Content
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Configuration
 
-## Code scaffolding
+Before the user starts with using the Web app, it should provide it's API token.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-----
+### Entity Extraction
 
-## Build
+![alt text](./res/EntityExtraction.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Inputs
 
-## Running unit tests
+- Text for extraction
+- Slider which determines trade-off between more precision and more tags
+- Include section
+    - Image
+    - Abstract
+    - Categories
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Output
 
-## Running end-to-end tests
+Extracted entities with checked elements from the include section.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+-----
+### Text Similarity
 
-## Further help
+#### Input
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Two texts
+
+#### Output
+
+Percentage of similarity between the texts.
+
+-----
+### Language Detection
+
+#### Inputs
+
+- Text for Language Detection
+- Check box "Clean" - Text should/should not be cleaned from urls, links etc.
+
+#### Output
+
+List of languages and certainty percentages for each.
+
+----
+#### Sentiment Analysis
+
+![alt text](./res/SentimentAnalysis.png)
+
+#### Inputs
+
+- Text for Sentiment Analysis
+- Language specifier (auto, en, it)
+
+#### Output
+
+Score how much is the provided text positive/negative. The color of the label for the sentiment type is interpolated according to score value(between red and green).
+
+----
+### History
+
+![alt text](./res/History.png)
+
+History of all calls to Dandelion API.
