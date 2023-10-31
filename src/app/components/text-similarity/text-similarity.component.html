@@ -14,3 +14,6 @@
 <!-- if similarity is -1 dont show it   -->
 <div *ngIf="similarity != -1">
     <p>Similarity: {{similarity}}</p>
+
+<div *ngIf="errorMessage != ''">
+    <p>{{errorMessage}}</p>

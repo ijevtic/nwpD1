@@ -20,12 +20,14 @@ export class SentimentAnalysisComponent {
   score: number;
   sentimentType: string;
   result: boolean;
+  errorMessage: string;
 
   constructor(private dandelionService: DandelionService, private configService: ConfigService) {
     this.text = '';
     this.score = 0;
     this.sentimentType = '';
     this.result = false;
+    this.errorMessage = '';
   }
 
   analyzeSentiment() {
@@ -33,6 +35,8 @@ export class SentimentAnalysisComponent {
       this.result = true;
       this.score = response.sentiment.score;
       this.sentimentType = response.sentiment.type;
+    }, (error: any) => {
+      this.errorMessage = `There has been an error with the request.`;
     });
   }
 

@@ -13,18 +13,22 @@ export class TextSimilarityComponent {
   text2: string;
 
   similarity: number;
+  errorMessage: string;
 
   constructor(private dandelionService: DandelionService, private configService: ConfigService) {
     this.text1 = '';
     this.text2 = '';
     this.similarity = -1;
+    this.errorMessage = '';
   }
 
   calculateSimilarity() {
     this.dandelionService.getTextSimilarity(this.text1, this.text2, this.configService.getToken()).subscribe((response) => {
       this.similarity = response.similarity;
+    },
+    (error: any) => {
+      this.errorMessage = `There has been an error with the request.`;
     });
-    // this.similarity = 0.5;
   }
 
 }

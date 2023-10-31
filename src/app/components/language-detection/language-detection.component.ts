@@ -12,18 +12,21 @@ export class LanguageDetectionComponent {
   text: string;
   cleanCheckBox: boolean;
   detectedLanguages: DetectedLang[];
+  errorMessage: string;
 
   constructor(private dandelionService: DandelionService, private configService: ConfigService) {
     this.text = '';
     this.cleanCheckBox = false;
     this.detectedLanguages = [];
+    this.errorMessage = '';
   }
 
   detectLanguage() {
-    console.log(this.text);
-    console.log(this.cleanCheckBox);
-    this.dandelionService.getLanguageDetection(this.text, this.cleanCheckBox, this.configService.getToken()).subscribe((response) => {
+    this.dandelionService.getLanguageDetection(this.text, this.cleanCheckBox, this.configService.getToken()).subscribe((response: any) => {
       this.detectedLanguages = response.detectedLangs;
+      this.errorMessage = '';
+    }, (error: any) => {
+      this.errorMessage = `There has been an error with the request.`;
     });
   }
 }

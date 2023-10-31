@@ -20,3 +20,8 @@
         </mat-card>
     </div>
 </div>
+
+<!-- if no languages are detected, print error message -->
+
+<div *ngIf="errorMessage != ''">
+    <p>{{errorMessage}}</p>

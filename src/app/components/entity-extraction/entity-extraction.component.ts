@@ -21,6 +21,7 @@ export class EntityExtractionComponent {
   imageCheckBox: boolean;
   abstractCheckBox: boolean;
   categoriesCheckBox: boolean;
+  errorMessage: string;
 
   annotations: Annotation[];
 
@@ -32,6 +33,7 @@ export class EntityExtractionComponent {
     this.abstractCheckBox = false;
     this.categoriesCheckBox = false;
     this.annotations = [];
+    this.errorMessage = '';
   }
 
   extractEntities() {
@@ -54,6 +56,8 @@ export class EntityExtractionComponent {
 
     this.dandelionService.getEntityExtraction(this.text, this.sliderValue/10.0, include, this.configService.getToken()).subscribe((response) => {
         this.annotations = response.annotations;
+    }, (error: any) => {
+      this.errorMessage = `There has been an error with the request.`;
     });
   }
 }
